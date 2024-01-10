@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Xzh/OwmTo4//mj6rlgKWVLOqtfurVXxKdgGq9S2k62dNfzeJZ/kSvZmWcZFeF9H2rezKxU5PCGtXoeK6UHKA8w==",
+  "dgSpecHash": "pUO0XuFhYTW2FW3v1yaFxkvt0ovyXWuHgfZ1AiLUVX+eot0sqJ+syvVo2SYiC52owzOaNGUPsRB/X9+JkgThwA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\One\\Documents\\GitHub\\ConsoleApp1\\ConsoleApp1.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/user/Documents/GitHub/ConsoleApp/ConsoleApp1/ConsoleApp1.csproj",
+  "expectedPackageFiles": [
+    "/Users/user/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.25/microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.netcore.app.host.osx-x64/6.0.25/microsoft.netcore.app.host.osx-x64.6.0.25.nupkg.sha512",
+    "/Users/user/.nuget/packages/microsoft.netcore.app.ref/6.0.25/microsoft.netcore.app.ref.6.0.25.nupkg.sha512"
+  ],
   "logs": []
 }

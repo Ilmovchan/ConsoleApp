@@ -9,6 +9,50 @@ namespace ConsoleApp1
     public static class Problems
     {
 
+
+        private static void Resize(ref int[] array, int length)
+        {
+            int[] newArray = new int[length];
+
+            for (int i = 0; i < array.Length && i < newArray.Length; i++)
+            {
+                newArray[i] = array[i];
+            }
+
+            array = newArray;
+        }
+
+        private static void ShiftRight(int[] array, int start = 0)
+        {
+            for (int i = array.Length - 1; i > start; i--)
+            {
+                array[i] = array[i - 1];
+            }
+        }
+
+        private static void ShiftLeft(int[] array, int start)
+        {
+            for (int i = start; i < array.Length - 1; i++)
+            {
+                array[i] = array[i + 1];
+            }
+        }
+
+
+        private static void AddByIndex(ref int[] array, int index, int val)
+        {
+            Resize(ref array, array.Length + 1);
+            ShiftRight(array, index);
+
+            array[index] = val;
+        }
+
+        private static void RemoveByIndex(ref int[] array, int index)
+        {
+            ShiftLeft(array, index);
+            Resize(ref array, array.Length - 1);
+        }
+
         public static int[] TwoSum(int[] nums, int target)
         {
             Dictionary<int, int> table = new Dictionary<int, int>();

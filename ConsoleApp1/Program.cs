@@ -18,64 +18,21 @@ class Program
 
     static void Main()
     {
-        Stopwatch sw = new Stopwatch();
-        MyStruct a = new MyStruct();
 
-        sw.Start();
-        for (int i = 0; i < int.MaxValue; i++)
+        Math.Sum<int>(5,3,5,6,1,2);
+
+    }
+}
+
+class Math
+{
+    public static T Sum<T>(params T[] parameters)
+    {
+        if (typeof(T) == typeof(int) || typeof(T) == typeof(double))
         {
-            Foo(a);
+            return default;
         }
-        sw.Stop();
-        Console.WriteLine($"Foo: {sw.ElapsedMilliseconds}");
-
-        sw.Restart();
-        for (int i = 0; i < int.MaxValue; i++)
-        {
-            Bar(a);
-        }
-        sw.Stop();
-        Console.WriteLine($"Bar: {sw.ElapsedMilliseconds}");
-
-        sw.Restart();
-        for (int i = 0; i < int.MaxValue; i++)
-        {
-            Ref(ref a);
-        }
-        sw.Stop();
-        Console.WriteLine($"Ref: {sw.ElapsedMilliseconds}");
+        else throw Exception(null);
     }
-
-    struct MyStruct
-    {
-        decimal a;
-        decimal b;
-        decimal c;
-        decimal d;
-        decimal e;
-        decimal f;
-        decimal g;
-        decimal h;
-        decimal i;
-        decimal j;
-        decimal k;
-        decimal l;
-    }
-
-    static void Foo(MyStruct value)
-    {
-
-    }
-
-    static void Bar(in MyStruct value)
-    {
-
-    }
-
-    static void Ref(ref MyStruct value)
-    {
-
-    }
-
 }
 

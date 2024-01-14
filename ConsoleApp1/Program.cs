@@ -6,30 +6,53 @@
 
         static void Main()
         {
-            Student student = new Student("Biba", "Johnson");
+            DataProcessor dataProcessor = new DataProcessor();
 
-            Console.WriteLine(student.GetFullName());
+            DbDataProvider dbData = new DbDataProvider();
+
+            dataProcessor.ProcessData(dbData);
         }
     }
 
-    class Student
+    interface IDataProcessor
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        void ProcessData(IDataProvider dataProvider);
+    }
 
-        public Student(string firstName, string lastName)
+    interface IDataProvider
+    {
+        string GetData();
+    }
+
+    class DataProcessor : IDataProcessor
+    {
+        public void ProcessData(IDataProvider dataProvider)
         {
-            FirstName = firstName;
-            LastName = lastName;
+            Console.WriteLine(dataProvider.GetData());
         }
     }
 
-
-    static class MyExtensions
+    class DbDataProvider : IDataProvider
     {
-        public static string GetFullName(this Student student)
+        public string GetData()
         {
-            return student.LastName + " " + student.FirstName;
+            return "Data from db";
+        }
+    }
+
+    class ApiDataProvider : IDataProvider
+    {
+        public string GetData()
+        {
+            return "Data from Api";
+        }
+    }
+
+    class FileDataProvider : IDataProvider
+    {
+        public string GetData()
+        {
+            return "Data from file";
         }
     }
 

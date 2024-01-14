@@ -9,8 +9,55 @@ namespace ConsoleApp1
     public static class Problems
     {
 
+    static void PrintArray(int[] array, int i = 0)
+    {
+        if (i < array.Length)
+        {
+            Console.WriteLine(array[i]);
+            PrintArray(array, i + 1);
+        }
+    }
 
-        private static void Resize(ref int[] array, int length)
+    static int ArraySum(int[] array, int i = 0)
+    {
+        if (i >= array.Length) return 0;
+
+        return array[i] + ArraySum(array, i + 1);
+    }
+
+    static int NumberSum(int value)
+    {
+        if (value < 10) return value;
+
+        int digit = value % 10;
+
+        int nextValue = value / 10;
+
+        return digit + NumberSum(nextValue);
+    }
+
+    static int CycleWhileSum(int value)
+    {
+        int result = 0;
+        while (value > 0)
+        {
+            result += value % 10;
+            value /= 10;
+        }
+        return result;
+    }
+
+    static int CycleForSum(int value)
+    {
+        int result = 0;
+        for (int i = value; i > 0; i /= 10)
+        {
+            result += i % 10;
+        }
+        return result;
+    }
+
+    private static void Resize(ref int[] array, int length)
         {
             int[] newArray = new int[length];
 

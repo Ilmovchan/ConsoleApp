@@ -9,11 +9,11 @@ namespace ConsoleApp1
 {
     public class Node
     {
-        public int Data { get; set; }
+        public char Data { get; set; }
         public Node Left { get; set; }
         public Node Right { get; set; }
 
-        public Node(int data)
+        public Node(char data)
         {
             Data = data;
             Left = null;
@@ -30,12 +30,12 @@ namespace ConsoleApp1
             Root = null;
         }
 
-        public void Insert(int data)
+        public void Insert(char data)
         {
             Root = InsertRecursive(Root, data);
         }
 
-        private Node InsertRecursive(Node root, int data)
+        private Node InsertRecursive(Node root, char data)
         {
             if (root == null) return new Node(data);
 
@@ -45,22 +45,7 @@ namespace ConsoleApp1
             return root;
         }
 
-        public void DepthFirstSearch(Node root)
-        {
-            if (root == null) return;
 
-            DepthFirstSearch(root.Left);
-            Console.WriteLine(root.Data);
-            DepthFirstSearch(root.Right);
-        }
-
-        public Node Search(Node root, int data)
-        {
-            if (root == null) return null;
-
-            if (data == root.Data) return root;
-            return (data < root.Data) ? Search(root.Left, data) : Search(root.Right, data);
-        }
 
         public Node Min(Node root)
         {
@@ -90,14 +75,7 @@ namespace ConsoleApp1
             }
         }
 
-        public void Leaves(Node root)
-        {
-            if (root == null) return;
-            if (root.Left == null && root.Right == null) Console.WriteLine(root.Data);
 
-            Leaves(root.Left);
-            Leaves(root.Right);
-        }
 
         public void BreathFirstSearch(Node root)
         {
@@ -117,6 +95,52 @@ namespace ConsoleApp1
                 if (current.Right != null) queue.Enqueue(current.Right);
 
             }
+        }
+
+
+        public void InOrderTraversal(Node root) //ЦЕНТРИРОВАННЫЙ ОБХОД
+        {
+            if (root == null) return;
+
+            InOrderTraversal(root.Left);
+            Console.WriteLine(root.Data);
+            InOrderTraversal(root.Right);
+        }
+
+        public void PreOrderTraversal(Node root) //ПРЯМОЙ ОБХОД
+        {
+            if (root == null) return;
+
+            Console.WriteLine(root.Data);
+            PreOrderTraversal(root.Left);
+            PreOrderTraversal(root.Right);
+        }
+
+        public void PostOrderTraversal(Node root) //ОБРАТНЫЙ ОБХОД
+        {
+            if (root == null) return;
+
+            PostOrderTraversal(root.Left);
+            PostOrderTraversal(root.Right);
+            Console.WriteLine(root.Data);
+        }
+
+
+        public void GetLeaves(Node root)
+        {
+            if (root == null) return;
+            if (root.Left == null && root.Right == null) Console.WriteLine(root.Data);
+
+            GetLeaves(root.Left);
+            GetLeaves(root.Right);
+        }
+
+        public Node Search(Node root, int data)
+        {
+            if (root == null) return null;
+
+            if (data == root.Data) return root;
+            return (data < root.Data) ? Search(root.Left, data) : Search(root.Right, data);
         }
     }
 }

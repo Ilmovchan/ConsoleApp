@@ -1,38 +1,36 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.ComponentModel;
-using System.IO.Pipes;
-using System.Net.Http.Headers;
-using System.Security.Principal;
-using System.Buffers;
-using System.Diagnostics.Metrics;
-using System.Runtime.CompilerServices;
-using System.Net;
-using System.Diagnostics;
-using System.Globalization;
-
-class Program
+﻿namespace ConsoleApp1
 {
 
-    static void Main()
+    class Program
     {
 
-        Math.Sum<int>(5,3,5,6,1,2);
-
-    }
-}
-
-class Math
-{
-    public static T Sum<T>(params T[] parameters)
-    {
-        if (typeof(T) == typeof(int) || typeof(T) == typeof(double))
+        static void Main()
         {
-            return default;
-        }
-        else throw Exception(null);
-    }
-}
+            Student student = new Student("Biba", "Johnson");
 
+            Console.WriteLine(student.GetFullName());
+        }
+    }
+
+    class Student
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public Student(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
+    }
+
+
+    static class MyExtensions
+    {
+        public static string GetFullName(this Student student)
+        {
+            return student.LastName + " " + student.FirstName;
+        }
+    }
+
+}
